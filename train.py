@@ -20,8 +20,11 @@ import dvc.api
 iris = pd.read_csv("data_raw.csv")
 
 params = dvc.api.params_show()
-epochs = params['epochs']
+print(params)
+epochs = params['train']['epochs']
 print(f'The value of the environment variable "epoch" is: {epochs}')
+n_neighbors = params['train']['n_neighbors']
+print(f'The value of the environment variable "n_neighbors" is: {n_neighbors}')
 
 train, test = train_test_split(iris, test_size=0.3, random_state=1) # our main data split into train and test
 # the attribute test_size=0.3 splits the data into 70% and 30% ratio. train=70% and test=30%
@@ -107,7 +110,7 @@ joblib.dump(model, 'model_sepal.pkl')
 # prediction = model.predict(test_X)
 # print('The accuracy of Decision Tree is: ', metrics.accuracy_score(prediction, test_y))
 
-# model = KNeighborsClassifier(n_neighbors=3) # this examines 3 neighbors for putting the data into class
+# model = KNeighborsClassifier(n_neighbors=n_neighbors) # this examines 3 neighbors for putting the data into class
 # model.fit(train_X, train_y)
 # prediction = model.predict(test_X)
 

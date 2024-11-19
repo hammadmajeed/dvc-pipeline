@@ -1,7 +1,3 @@
-epochs: 90
-tuning:
-  - learning-rate: 0.945
-  - max_depth: 7
-paths:
-  - labels: 'materials/labels'
-  - truth: 'materials/ground'
+train:
+  epochs: 90
+  n_neighbors: 4

@@ -11,7 +11,8 @@ stages:
     - train.py
     - data_raw.csv
     params:
-    - epochs
+    - train.epochs
+    - train.n_neighbors
     outs:
     - by_feature.png
     - model_all.pkl
