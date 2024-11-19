@@ -1,0 +1,49 @@
+schema: '2.0'
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - path: get_data.py
+      hash: md5
+      md5: 9a5928502c580b2858be07d5e5445b30
+      size: 813
+    outs:
+    - path: data_raw.csv
+      hash: md5
+      md5: 92645e391e79b17640286fe32aaa25c7
+      size: 4613
+  train:
+    cmd: python train.py
+    deps:
+    - path: data_raw.csv
+      hash: md5
+      md5: 92645e391e79b17640286fe32aaa25c7
+      size: 4613
+    - path: train.py
+      hash: md5
+      md5: 0ca81188a50b30b22a9015fe8e44b64e
+      size: 5625
+    params:
+      params.yaml:
+        epochs: 90
+    outs:
+    - path: by_feature.png
+      hash: md5
+      md5: 7925b4a0adbde2c5fafdf3fcf66230dc
+      size: 18503
+    - path: metrics.json
+      hash: md5
+      md5: 32c3ecaace1f6e44046230ebf6b06c12
+      size: 75
+    - path: model_all.pkl
+      hash: md5
+      md5: cd12f32565286e38d54671154ff41bfd
+      size: 5587
+    - path: model_petal.pkl
+      hash: md5
+      md5: f004a974f17fcd8a7671eea772740414
+      size: 4035
+    - path: model_sepal.pkl
+      hash: md5
+      md5: 98eecbb643b39143f6be20fe03f1fd77
+      size: 5763

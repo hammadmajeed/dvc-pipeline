@@ -1,0 +1,22 @@
+stages:
+  get_data:
+    cmd: python get_data.py
+    deps:
+    - get_data.py
+    outs:
+    - data_raw.csv  
+  train:
+    cmd: python train.py
+    deps:
+    - train.py
+    - data_raw.csv
+    params:
+    - epochs
+    outs:
+    - by_feature.png
+    - model_all.pkl
+    - model_sepal.pkl
+    - model_petal.pkl
+    metrics:
+    - metrics.json:
+        cache: false
